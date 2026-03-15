@@ -25,7 +25,10 @@ $this->title = "Заявка №" . $model->id . " от " . Yii::$app->formatter
                 'attribute' => 'box_type_id',
                 'value' => $model->boxType->title,
             ],
-            'box_date',
+            [
+                'attribute' => 'box_date',
+                'value' => Yii::$app->formatter->asDate($model->box_date, "php:Y.m.d"),
+            ],
             'box_time',
             'box_ves',
             'box_gabarit',
