@@ -56,4 +56,12 @@ class AddressFrom extends \yii\db\ActiveRecord
         return $this->hasMany(Application::class, ['address_from_id' => 'id']);
     }
 
+    public static function getAddressFrom() 
+    {
+        return static::find()
+            ->select('title')
+            ->indexBy('id')
+            ->column();
+    }
+
 }

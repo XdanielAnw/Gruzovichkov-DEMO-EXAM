@@ -46,6 +46,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             !Yii::$app->user->isGuest
             ? ['label' => 'Личный кабинет', 'url' => ['/account']]
             : '',
+
+            !Yii::$app->user->isGuest
+            ? ['label' => 'Админ панель', 'url' => ['/account']]
+            : '',
+
             Yii::$app->user->isGuest
                 ? ['label' => 'Авторизация', 'url' => ['/site/login']]
                 : '<li class="nav-item">'

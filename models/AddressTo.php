@@ -56,4 +56,12 @@ class AddressTo extends \yii\db\ActiveRecord
         return $this->hasMany(Application::class, ['address_to_id' => 'id']);
     }
 
+    public static function getAddressTo() 
+    {
+        return static::find()
+            ->select('title')
+            ->indexBy('id')
+            ->column();
+    }
+
 }

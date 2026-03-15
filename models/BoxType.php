@@ -56,4 +56,12 @@ class BoxType extends \yii\db\ActiveRecord
         return $this->hasMany(Application::class, ['box_type_id' => 'id']);
     }
 
+    public static function getBoxType()
+    {
+        return static::find()
+            ->select('title')
+            ->indexBy('id')
+            ->column();
+    }
+
 }

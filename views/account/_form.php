@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\Html;
+use yii\bootstrap5\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var app\models\Application $model */
@@ -11,6 +11,8 @@ use yii\widgets\ActiveForm;
 <div class="application-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+        <h3>Создание заявки</h3>
 
         <?= $form->field($model, 'box_type_id')->textInput() ?>
 
@@ -26,9 +28,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'address_to_id')->textInput() ?>
 
-        <?= $form->field($model, 'status_id')->textInput() ?>
-
-        <div class="form-group">
+        <div class="form-group d-flex justify-content-end">
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
         </div>
 
