@@ -40,7 +40,7 @@ use yii\bootstrap5\ActiveForm;
         ) ?>
 
         <div class="form-group d-flex justify-content-end">
-            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
         </div>
 
     <?php ActiveForm::end(); ?>

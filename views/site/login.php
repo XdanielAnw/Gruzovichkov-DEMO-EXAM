@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="form-group d-flex justify-content-between">
                 <?= Html::submitButton('Войти', ['class' => 'btn btn-outline-info', 'name' => 'login-button']) ?>
-                <?= Html::a('Зарегестрироваться', ['site/register'], ['class' => 'btn btn-outline-primary']) ?>
+                <?= Html::a('Зарегистрироваться', ['site/register'], ['class' => 'btn btn-outline-primary']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

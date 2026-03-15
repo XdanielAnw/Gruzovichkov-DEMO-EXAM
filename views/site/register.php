@@ -21,7 +21,7 @@ use yii\bootstrap5\ActiveForm;
         ]) ?>
     
         <div class="form-group d-flex justify-content-between">
-            <?= Html::submitButton('Зарегестрироваться', ['class' => 'btn btn-outline-primary']) ?>
+            <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-outline-primary']) ?>
             <?= Html::a('Войти', ['/site/login'], ['class' => 'btn btn-outline-info']) ?>
         </div>
     <?php ActiveForm::end(); ?>

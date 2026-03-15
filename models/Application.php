@@ -62,7 +62,7 @@ class Application extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'Пользователь',
+            'user_id' => 'Клиент',
             'created_at' => 'Created At',
             'box_type_id' => 'Тип груза',
             'box_date' => 'Дата',

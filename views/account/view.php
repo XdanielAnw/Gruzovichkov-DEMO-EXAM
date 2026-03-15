@@ -15,7 +15,7 @@ $this->title = "Заявка №" . $model->id . " от " . Yii::$app->formatter
     <h3><?= Html::encode($this->title) ?></h3>
 
     <div class="form-group d-flex justify-content-between">
-            <?= Html::a('Назад', ['/account'], ['class' => 'btn btn-outline-info']) ?>
+            <?= Html::a('Назад', ['index'], ['class' => 'btn btn-outline-primary']) ?>
     </div>
 
     <?= DetailView::widget([
