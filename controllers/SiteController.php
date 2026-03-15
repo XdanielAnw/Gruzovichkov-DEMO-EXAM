@@ -77,6 +77,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            Yii::$app->session->setFlash('success', 'Вы успешно вошли');
             return $this->goBack();
         }
 
@@ -98,33 +99,16 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
     public function actionRegister() {
         $model = new \app\models\user(); 
             if ($model->load(Yii::$app->request->post())) { 
                 if ($model->validate()) {
                     $model->auth_key = Yii::$app->security->generateRandomString();
                     $model->password = Yii::$app->security->generatePasswordHash($model->password);
-
                     if ($model->save()) {
+                        Yii::$app->user->login($model, 24 * 3600);
                         Yii::$app->session->setFlash('success', 'Вы успешно зарегестрировались');
+                        Yii::$app->session->setFlash('info', 'Вы успешно вошли в систему');
                         return $this->goHome();
                     } 
                 } 

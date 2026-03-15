@@ -12,9 +12,7 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to login:</p>
+    <h3>Авторизация</h3>
 
     <div class="row">
         <div class="col-lg-5">
@@ -29,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'login')->textInput(['autofocus' => true]) ?>
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
@@ -37,11 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
             ]) ?>
 
-            <div class="form-group">
-                <div>
-                    <?= Html::submitButton('Войти', ['class' => 'btn btn-outline-info', 'name' => 'login-button']) ?>
-                    <?= Html::a('Зарегестрироваться', ['site/register'], ['class' => 'btn btn-outline-primary']) ?>
-                </div>
+            <div class="form-group d-flex justify-content-between">
+                <?= Html::submitButton('Войти', ['class' => 'btn btn-outline-info', 'name' => 'login-button']) ?>
+                <?= Html::a('Зарегестрироваться', ['site/register'], ['class' => 'btn btn-outline-primary']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
