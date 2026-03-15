@@ -43,11 +43,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             Yii::$app->user->isGuest
             ? ['label' => 'Регистрация', 'url' => ['/site/register']]
             : '',
-            !Yii::$app->user->isGuest
+            !Yii::$app->user->isGuest && !Yii::$app->user->identity->IsAdmin     
             ? ['label' => 'Личный кабинет', 'url' => ['/account']]
             : '',
 
-            !Yii::$app->user->isGuest
+            !Yii::$app->user->isGuest && Yii::$app->user->identity->IsAdmin   
             ? ['label' => 'Админ панель', 'url' => ['/account']]
             : '',
 
