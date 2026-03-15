@@ -116,13 +116,19 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
+    public function actionRegister() {
+        $model = new \app\models\user(); 
+            if ($model->load(Yii::$app->request->post())) { 
+                if ($model->validate()) {
+                    $model->auth_key = Yii::$app->security->generateRandomString();
+                    $model->password = Yii::$app->security->generatePasswordHash($model->password);
+
+                    if ($model->save()) {
+                        Yii::$app->session->setFlash('success', 'Вы успешно зарегестрировались');
+                        return $this->goHome();
+                    } 
+                } 
+            } 
+        return $this->render('register', [ 'model' => $model, ]); 
     }
 }
