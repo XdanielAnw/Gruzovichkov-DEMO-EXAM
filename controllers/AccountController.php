@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\Application;
+use app\models\Status;
+use Symfony\Component\VarDumper\VarDumper;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -40,7 +43,6 @@ class AccountController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Application::find(),
-            /*
             'pagination' => [
                 'pageSize' => 50
             ],
@@ -49,7 +51,6 @@ class AccountController extends Controller
                     'id' => SORT_DESC,
                 ]
             ],
-            */
         ]);
 
         return $this->render('index', [
@@ -80,8 +81,15 @@ class AccountController extends Controller
         $model = new Application();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->user_id = Yii::$app->user->id;
+                $model->status_id = Status::getAliasStatusesId("new");
+                
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                } else {
+                    VarDumper::dump($model->errors, 10, true); die;
+                }
             }
         } else {
             $model->loadDefaultValues();
