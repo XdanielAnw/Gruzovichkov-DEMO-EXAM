@@ -62,16 +62,16 @@ class Application extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
+            'user_id' => 'Пользователь',
             'created_at' => 'Created At',
-            'box_type_id' => 'Box Type ID',
-            'box_date' => 'Box Date',
-            'box_time' => 'Box Time',
-            'box_ves' => 'Box Ves',
-            'box_gabarit' => 'Box Gabarit',
-            'address_from_id' => 'Address From ID',
-            'address_to_id' => 'Address To ID',
-            'status_id' => 'Status ID',
+            'box_type_id' => 'Тип груза',
+            'box_date' => 'Дата',
+            'box_time' => 'Время',
+            'box_ves' => 'Вес груза',
+            'box_gabarit' => 'Примерный габарит',
+            'address_from_id' => 'Адрес отправления',
+            'address_to_id' => 'Адрес доставки',
+            'status_id' => 'Статус',
         ];
     }
 
