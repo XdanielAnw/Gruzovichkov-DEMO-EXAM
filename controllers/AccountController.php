@@ -43,7 +43,7 @@ class AccountController extends Controller
             return false;
         }
 
-        if (Yii::$app->user->isGuest || Yii::$app->user->isAdmin) {
+        if (Yii::$app->user->isGuest || Yii::$app->user->identity->isAdmin) {
             return $this->goHome();
         }
 

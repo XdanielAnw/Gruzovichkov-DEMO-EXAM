@@ -78,13 +78,12 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             Yii::$app->session->setFlash('success', 'Вы успешно вошли');
-            return $this->goBack();
-        }
 
-        if(Yii::$app->user->identity->isAdmin) {
-            return $this->redirect("/admin");
+            if(Yii::$app->user->identity->isAdmin) {
+                return $this->redirect("/admin");
+            }
+            return $this->redirect("/account");
         }
-        return $this->redirect("/account");
 
         $model->password = '';
         return $this->render('login', [
