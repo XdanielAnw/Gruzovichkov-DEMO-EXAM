@@ -17,6 +17,18 @@ use yii\bootstrap5\Html;
     <div class="mb-2">
         <strong >Тип груза:</strong> <?= $model->boxType->title ?> 
     </div>
+    <div class="mb-2">
+        <strong >Вес груза:</strong> <?= $model->box_ves ?> 
+    </div>
+    <div class="mb-2">
+        <strong >Габарит груза:</strong> <?= $model->box_gabarit ?> 
+    </div> 
+    <div class="mb-2">
+        <strong >Адрес отправки:</strong> <?= $model->addressFrom->title ?> 
+    </div>
+    <div class="mb-2">
+        <strong >Адрес доставки:</strong> <?= $model->addressTo->title ?> 
+    </div>
 
     <div class="form-group d-flex justify-content-end gap-3">
          <!-- $model->status_id === Status::getAliasStatusesId("new")

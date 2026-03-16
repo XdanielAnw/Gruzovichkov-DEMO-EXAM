@@ -81,6 +81,11 @@ class SiteController extends Controller
             return $this->goBack();
         }
 
+        if(Yii::$app->user->identity->isAdmin) {
+            return $this->redirect("/admin");
+        }
+        return $this->redirect("/account");
+
         $model->password = '';
         return $this->render('login', [
             'model' => $model,
