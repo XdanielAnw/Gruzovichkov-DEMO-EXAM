@@ -6,40 +6,48 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var app\models\Application $model */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Applications', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = "Заявка №" . $model->id . " от " . Yii::$app->formatter->asDatetime($model->created_at, "php:Y.m.d H:i:s") ;
+
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="application-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+    <div class="form-group d-flex justify-content-between">
+            <?= Html::a('Назад', ['index'], ['class' => 'btn btn-outline-primary']) ?>
+    </div>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'user_id',
-            'created_at',
-            'box_type_id',
-            'box_date',
+            [
+                'attribute' => 'user_id',
+                'value' => $model->user->full_name
+            ],
+            [
+                'attribute' => 'box_type_id',
+                'value' => $model->boxType->title,
+            ],
+            [
+                'attribute' => 'box_date',
+                'value' => Yii::$app->formatter->asDate($model->box_date, "php:Y.m.d"),
+            ],
             'box_time',
             'box_ves',
             'box_gabarit',
-            'address_from_id',
-            'address_to_id',
-            'status_id',
+            [
+                'attribute' => 'address_from_id',
+                'value' => $model->addressFrom->title,
+            ],
+            [
+                'attribute' => 'address_to_id',
+                'value' => $model->addressTo->title,
+            ],
+            [
+                'attribute' => 'status_id',
+                'value' => $model->status->title,
+            ],
         ],
     ]) ?>
 
