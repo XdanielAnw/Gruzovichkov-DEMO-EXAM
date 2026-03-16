@@ -102,6 +102,7 @@ class AccountController extends Controller
                 $model->status_id = Status::getAliasStatusesId("new");
                 
                 if ($model->save()) {
+                    Yii::$app->session->setFlash("success", "Заявка успешно создана");
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
                     VarDumper::dump($model->errors, 10, true); die;
