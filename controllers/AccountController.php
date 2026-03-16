@@ -34,6 +34,22 @@ class AccountController extends Controller
         );
     }
 
+    public function beforeAction($action)
+    {
+        // your custom code here, if you want the code to run before action filters,
+        // which are triggered on the [[EVENT_BEFORE_ACTION]] event, e.g. PageCache or AccessControl
+
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+
+        if (Yii::$app->user->isGuest || Yii::$app->user->isAdmin) {
+            return $this->goHome();
+        }
+
+        return true; // or false to not run the action
+    }
+
     /**
      * Lists all Application models.
      *
